@@ -1,0 +1,23 @@
+{
+  "name": "playpal-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcamere/playpal-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcamere/playpal-back/issues"
+  },
+  "homepage": "https://github.com/dcamere/playpal-back#readme",
+  "devDependencies": {
+    "discord-oauth2": "^2.11.0"
+  }
+}
