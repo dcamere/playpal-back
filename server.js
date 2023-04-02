@@ -1,14 +1,37 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 
-// Define a route that returns an object
-app.get('/', (req, res) => {
-  const obj = {
-    projectName: "Playpal",
-    version: "1.0.0",
-    devs: ["Diego Camere", "Salvatore Pazzaglia"]
+const uri = 'mongodb+srv://playpaldev:HawnbEdw6cIbEeYZ@cluster0.1c24rwd.mongodb.net/?retryWrites=true&w=majority';
+
+const userSchema = new mongoose.Schema({
+  user: String,
+  password: String
+});
+
+const User = mongoose.model('playpal', userSchema, 'playpal');
+
+async function connect() {
+  try {
+    await mongoose.connect(uri);
+    console.log('Connected to MongoDB');
+  } catch(error) {
+    console.error(error);
   }
-  res.json(obj);
+}
+
+connect();
+
+// Define a route that returns an object
+app.get('/', async (req, res) => {
+  const users = await User.find();
+  console.log(users);
+  // const obj = {
+  //   projectName: "Playpal",
+  //   version: "1.0.0",
+  //   devs: ["Diego Camere", "Salvatore Pazzaglia"]
+  // }
+  res.json(users);
 });
 
 app.get('/persons', (req, res) => {
