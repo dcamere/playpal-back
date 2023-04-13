@@ -1,8 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+var cors = require('cors');
+app.use(cors());
 
-const uri = 'mongodb+srv://playpaldev:HawnbEdw6cIbEeYZ@cluster0.1c24rwd.mongodb.net/?retryWrites=true&w=majority';
+const uri = `mongodb+srv://playpaldev:${process.env.DB_PASSWORD}@cluster0.1c24rwd.mongodb.net/?retryWrites=true&w=majority`;
 
 const userSchema = new mongoose.Schema({
   user: String,
